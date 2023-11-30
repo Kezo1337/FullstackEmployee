@@ -1,0 +1,15 @@
+.example-container {
+  height: 740px;
+  overflow: auto;
+}
+
+.fixed-table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  .fixed-table th, .fixed-table td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }

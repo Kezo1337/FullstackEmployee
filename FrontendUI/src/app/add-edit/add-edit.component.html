@@ -1,0 +1,79 @@
+
+<!-- Tittle -->
+<h1 *ngIf="AddMode" style="text-align: center;" mat-dialog-title>Add Employee</h1>
+<h1 *ngIf="!AddMode" style="text-align: center;" mat-dialog-title>Edit Employee</h1>
+
+
+<mat-dialog-content class="mat-typography">
+<div style="display:flexbox">
+<div style="display: table-caption;">
+
+<!-- Form for add/edit employee -->
+<form #form="ngForm" (ngSubmit)="onSubmit()">
+  <label for=""> <b>Name</b></label>
+  <mat-form-field style="width: 500px;">
+    <mat-label>Enter name</mat-label>
+    <input matInput
+    id="userName"
+    name="userName"
+    [(ngModel)]="newEmployee.userName"
+    required
+    >
+  </mat-form-field>
+
+  <label for=""> <b>Email</b></label>
+  <mat-form-field style="width: 500px;">
+    <mat-label>Enter email</mat-label>
+    <input matInput
+    name="email"
+    [(ngModel)]="newEmployee.email"
+    email
+    required
+   >
+  </mat-form-field>
+
+  <label for=""> <b>Phone</b></label>
+  <mat-form-field style="width: 500px;">
+    <mat-label>Enter phone</mat-label>
+    <input type="number" matInput
+    name="phone"
+    [(ngModel)]="newEmployee.phone"
+    required
+    >
+  </mat-form-field>
+
+  <label for=""> <b>Salary</b></label>
+  <mat-form-field style="width: 500px;">
+    <mat-label>Enter salary</mat-label>
+    <input type="number" matInput
+    name="salary"
+    [(ngModel)]="newEmployee.salary"
+    required
+>
+  </mat-form-field>
+
+  <label for=""> <b>Department</b></label>
+  <mat-form-field style="width: 500px;">
+    <mat-label>Select department</mat-label>
+    <mat-select 
+    name="department"
+    [(ngModel)]="newEmployee.department"
+    required
+>
+      <mat-option *ngFor="let department of departments" [value]="department">{{department}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+<div style="text-align: center;">
+  <button style="margin-right: 10px;" mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+  <button [disabled]="!form.valid" *ngIf="AddMode" type="submit" mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Add</button>
+  <button [disabled]="!form.valid" *ngIf="!AddMode" type="submit" mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Update</button>
+
+</div>
+</form>
+
+</div>
+</div>
+
+
